@@ -60,34 +60,6 @@ class AuthorDetailView(generic.DetailView):
     """Generic class-based detail view for an author."""
     model = Author
 
-
-class GenreDetailView(generic.DetailView):
-    """Generic class-based detail view for a genre."""
-    model = Genre
-
-class GenreListView(generic.ListView):
-    """Generic class-based list view for a list of genres."""
-    model = Genre
-    paginate_by = 10
-
-class LanguageDetailView(generic.DetailView):
-    """Generic class-based detail view for a genre."""
-    model = Language
-
-class LanguageListView(generic.ListView):
-    """Generic class-based list view for a list of genres."""
-    model = Language
-    paginate_by = 10
-
-class BookInstanceListView(generic.ListView):
-    """Generic class-based view for a list of books."""
-    model = BookInstance
-    paginate_by = 10
-
-class BookInstanceDetailView(generic.DetailView):
-    """Generic class-based detail view for a book."""
-    model = BookInstance
-    
 class LoanedBooksByUserListView(LoginRequiredMixin,generic.ListView):
     """Generic class-based view listing books on loan to current user."""
     model = BookInstance
@@ -151,4 +123,16 @@ class AuthorUpdate(UpdateView):
 class AuthorDelete(DeleteView):
     model = Author
     success_url = reverse_lazy('authors')
+
+class BookCreate(CreateView):
+    model = Book
+    fields = '__all__'
+
+class BookUpdate(UpdateView):
+    model = Book
+    fields = '__all__'
+
+class BookDelete(DeleteView):
+    model = Book
+    success_url = reverse_lazy('books')
 
